@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Christmas Tree</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #001f3f; /* Màu xanh đậm phù hợp */
+      }
+
+      .tree {
+        font-size: 15px; /* Tăng kích thước cây thông */
+        line-height: 1.1em;
+        text-align: center;
+        color: #2ecc71; /* Màu xanh lá cây */
+      }
+
+      .trunk {
+        color: brown;
+      }
+
+      .star {
+        color: #2ecc71; /* Màu xanh lá cây */
+      }
+
+      .blinking-star {
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="star">&#9733;</div>
+    <div class="star">&#9733;</div>
+    <br />
+    <div class="star">&#9733;</div>
+    <div class="star">&#9733;</div>
+    <br />
+    <div class="star">&#9733;</div>
+    <div class="tree"></div>
+    <script>
+      const tree = document.querySelector(".tree");
+
+      function createTree(height) {
+        let treeHTML = "";
+        for (let i = 0; i < height - 1; i++) {
+          let spaces = " ".repeat(height - i - 1);
+          let stars = "";
+          for (let j = 0; j < 2 * i + 1; j++) {
+            if (j % 2 === 0) {
+              stars += '<span class="star">*</span>';
+            } else {
+              stars += '<span class="blinking-star">*</span>';
+            }
+          }
+          treeHTML += `<div>${spaces}${stars}</div>`;
+        }
+        // Draw tree trunk
+        const trunkWidth = Math.floor(height / 3); // Adjust trunk width
+        for (let i = 0; i < trunkWidth; i++) {
+          let spaces = " ".repeat(height - Math.floor(trunkWidth / 2));
+          let trunk = "|".repeat(trunkWidth);
+          treeHTML += `<div class="trunk">${spaces}${trunk}${spaces}</div>`;
+        }
+        tree.innerHTML = treeHTML;
+      }
+
+      // Set tree height and create the tree
+      const treeHeight = 28; // Tăng chiều cao của cây thông
+      createTree(treeHeight);
+
+      const blinkingStars = document.querySelectorAll(".blinking-star");
+      blinkingStars.forEach((star) => {
+        setInterval(() => {
+          const randomColor = getRandomColor();
+          star.style.color = randomColor;
+        }, 1000); // Change color every second
+      });
+
+      function getRandomColor() {
+        const letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+    </script>
+  </body>
+</html>
