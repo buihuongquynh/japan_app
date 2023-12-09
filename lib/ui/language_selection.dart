@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart'; // Import thư viện Flutter để sử dụng các widget và tính năng của Flutter
 
 class LanguageSelectScreen extends StatefulWidget {
-  const LanguageSelectScreen({Key? key}); // Khai báo một StatefulWidget có tên LanguageSelectScreen
+  const LanguageSelectScreen({super.key});
 
   @override
-  State<LanguageSelectScreen> createState() => _LanguageSelectScreenState(); // Tạo State cho StatefulWidget
+  State<LanguageSelectScreen> createState() =>
+      _LanguageSelectScreenState(); // Tạo State cho StatefulWidget
 }
 
 class _LanguageSelectScreenState extends State<LanguageSelectScreen> {
@@ -23,13 +24,33 @@ class _LanguageSelectScreenState extends State<LanguageSelectScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:', // Hiển thị một text cố định
+            Image.asset('assets/logo.png',
+                width: 200, height: 200, fit: BoxFit.contain),
+            const Padding(
+              padding: EdgeInsets.only(
+                  top: 20, bottom: 20), // Thiết lập giá trị padding ở đây
+              child: Text(
+                'DISPLAY LANGUAGE',
+                style: TextStyle(
+                  fontSize: 25, // Độ lớn của font
+                  fontWeight: FontWeight.bold,
+                  // Các thuộc tính văn bản khác nếu cần thiết
+                ),
+              ),
             ),
-            Text(
-              '$_counter', // Hiển thị giá trị của _counter
-              style: Theme.of(context).textTheme.headline6, // Style cho text
-            ),
+            TextButton(
+              onPressed: () {
+                // Xử lý khi nút được nhấn
+              },
+              style: TextButton.styleFrom(
+                textStyle: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green, // Màu văn bản của button
+                    backgroundColor: Color.fromARGB(255, 255, 255, 255)),
+              ),
+              child: const Text('Text Button'),
+            )
           ],
         ),
       ),
