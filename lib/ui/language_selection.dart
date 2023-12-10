@@ -20,6 +20,7 @@ class _LanguageSelectScreenState extends State<LanguageSelectScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(241, 242, 241, 255),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -38,26 +39,69 @@ class _LanguageSelectScreenState extends State<LanguageSelectScreen> {
                 ),
               ),
             ),
-            TextButton(
-              onPressed: () {
-                // Xử lý khi nút được nhấn
-              },
-              style: TextButton.styleFrom(
-                textStyle: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green, // Màu văn bản của button
-                    backgroundColor: Color.fromARGB(255, 255, 255, 255)),
-              ),
-              child: const Text('Text Button'),
-            )
+            Container(
+                margin: const EdgeInsets.only(left: 20, right: 20),
+                child: Column(
+                  children: [
+                    ElevatedButton.icon(
+                        onPressed: () {
+                          // Xử lý khi nút được nhấn
+                        },
+                        label: const Text(
+                          'ENGLISH',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        icon: Image.asset(
+                          'assets/en.png',
+                          width: 32,
+                          height: 32,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(double.infinity, 60))),
+                    const SizedBox(height: 15),
+                    ElevatedButton.icon(
+                        onPressed: () {
+                          // Xử lý khi nút được nhấn
+                        },
+                        label: const Text(
+                          'TIẾNG VIỆT',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromRGBO(255, 255, 255, 1)),
+                        ),
+                        icon: Image.asset(
+                          'assets/vn.png',
+                          width: 32,
+                          height: 32,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(double.infinity, 60),
+                            backgroundColor:
+                                const Color.fromRGBO(23, 147, 245, 1))),
+                    const SizedBox(height: 15),
+                    ElevatedButton(
+                        onPressed: () {
+                          // Xử lý khi nút được nhấn
+                        },
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(double.infinity, 60),
+                            backgroundColor:
+                                const Color.fromRGBO(54, 183, 36, 1)),
+                        child: const Text(
+                          'NEXT',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromRGBO(255, 255, 255, 1)),
+                        )),
+                  ],
+                )),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter, // Xử lý sự kiện khi nhấn button
-        tooltip: 'Increment', // Chú thích khi hover vào button
-        child: const Icon(Icons.add), // Icon của button
       ),
     );
   }
