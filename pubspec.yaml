@@ -56,6 +56,12 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/pagination-1.png
+    - assets/pagination-2.png
+    - assets/pagination-3.png
+    - assets/illustration.png
+    - assets/illustration-2.png
+    - assets/illustration-3.png
     - assets/logo.png
     - assets/en.png
     - assets/vn.png
